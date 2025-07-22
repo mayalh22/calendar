@@ -1,3 +1,16 @@
+HOW DO I 
+
+Make the days of the week text bigger
+
+Change image 2 link to https://t4.ftcdn.net/jpg/05/83/96/17/360_F_583961744_0WDje9RZhrWuHTxaWlbNjUSxpQmP6vdS.jpg
+
+
+Shuffle which day of the week is which color every week
+
+Make the clock bigger
+
+Make the title block 2x bigger
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +40,7 @@
     h1 {
       text-align: center;
       margin: 1rem 1rem 0.5rem;
-      font-size: 2.25rem;
+      font-size: 4.5rem;
       letter-spacing: 0.12em;
       color: #1f2d33;
       text-shadow: 1px 1px 0 #f9e5d3;
@@ -35,7 +48,7 @@
 
     h1 small {
       display: block;
-      font-size: 1rem;
+      font-size: 2rem;
       font-weight: 400;
       letter-spacing: normal;
       color: #274c77;
@@ -61,7 +74,7 @@
 .day-header {
   position: relative;
   font-weight: 700;
-  font-size: 1.17rem;
+  font-size: 1.8rem;
   text-align: center;
   padding: 6px 4px;
   color: #274c77;
@@ -120,7 +133,7 @@
 }
 
 .wc2 {
-  background-image: url('https://www.shutterstock.com/image-vector/grey-watercolor-art-background-old-260nw-2439447945.jpg');
+  background-image: url(https://t4.ftcdn.net/jpg/05/83/96/17/360_F_583961744_0WDje9RZhrWuHTxaWlbNjUSxpQmP6vdS.jpg);
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -277,7 +290,7 @@
     .title-container {
   position: relative;
   display: inline-block; /* shrink to fit h1 */
-  margin: 1rem auto 0.5rem;
+  margin: 2rem auto 1rem;
   text-align: center;
   width: max-content;
 }
@@ -305,7 +318,7 @@
 </head>
 <body>
 <!-- Timer & Current Event (Top Left) -->
-<div id="timer" style="position: fixed; top: 5px; left: 5px; font-family: monospace; font-size: 14px; background: rgba(255 255 255 / 0.85); padding: 4px 8px; border-radius: 4px; box-shadow: 0 0 6px rgba(0,0,0,0.1); max-width: 250px; z-index: 999;">
+<div id="timer" style="position: fixed; top: 5px; left: 5px; font-family: monospace; font-size: 22px; background: rgba(255 255 255 / 0.85); padding: 4px 8px; border-radius: 4px; box-shadow: 0 0 6px rgba(0,0,0,0.1); max-width: 250px; z-index: 999;">
   <div id="timeDisplay">Loading time...</div>
   <div id="currentEvent" style="margin-top: 4px; font-size: 12px; color: #555;">No current event</div>
 </div>
@@ -380,7 +393,19 @@
 
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const hours = Array.from({length: 19}, (_, i) => `${(i + 5) % 12 || 12} ${i + 5 < 12 ? 'AM' : 'PM'}`);
-    const wcClasses = ['wc1','wc2','wc3','wc4','wc5','wc6','wc7'];
+function shuffleArray(array) {
+  let arr = array.slice(); // copy array
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let wcClasses = ['wc1','wc2','wc3','wc4','wc5','wc6','wc7'];
+let shuffledWcClasses = shuffleArray(wcClasses);
+
+
 
     const startDate = new Date('2025-07-20T00:00:00');
     const maxWeeks = Math.floor((new Date('2025-09-07') - startDate) / (7*86400000));
@@ -405,6 +430,10 @@
     }
 
     function renderCalendar(weekStart) {
+// shuffle colors each time calendar renders (once per week)
+shuffledWcClasses = shuffleArray(wcClasses);
+
+
       clearCalendar();
       calendarEl.appendChild(document.createElement('div')); // blank corner
 
@@ -427,7 +456,7 @@
           const key = `${dayStr}_${hour}`;
 
           const block = document.createElement('div');
-          block.className = `time-block ${wcClasses[d % wcClasses.length]}`;
+          block.className = `time-block ${shuffledWcClasses[d % shuffledWcClasses.length]}`;
           block.dataset.key = key;
           calendarEl.appendChild(block);
         // Allow drop
@@ -663,3 +692,4 @@ openTodoBtn.addEventListener('click', () => {
   </script>
 </body>
 </html>
+
