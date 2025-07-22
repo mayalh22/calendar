@@ -4,11 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hourly Planner</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Faustina&family=Eczar&display=swap" rel="stylesheet" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-
     body {
       margin: 0;
       height: 100vh;
@@ -23,7 +21,6 @@
       background-color: #f9f7f1;
       user-select: none;
     }
-
     h1 {
       text-align: center;
       margin: 1rem 1rem 0.5rem;
@@ -32,7 +29,6 @@
       color: #1f2d33;
       text-shadow: 1px 1px 0 #f9e5d3;
     }
-
     h1 small {
       display: block;
       font-size: 2rem;
@@ -40,50 +36,44 @@
       letter-spacing: normal;
       color: #274c77;
     }
-
     .container {
       flex-grow: 1;
       overflow: auto;
       padding: 0.5rem;
     }
-
-.calendar {
-  display: grid;
-  grid-template-columns: 70px repeat(7, 1fr);
-  grid-auto-rows: calc(((100vh - 150px) / 19)* 3); /* 19 rows for hours, subtract header/nav height */
-  gap: 8px 8px;
-  width: 100vw;
-  max-width: 100vw;
-  margin: 0 auto;
-  overflow-x: auto;
-}
-
-.day-header {
-  position: relative;
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-  padding: 6px 4px;
-  color: #274c77;
-  text-shadow: 1px 1px 0 #f7d1a1;
-  box-shadow: 1px 3px 6px rgba(39, 76, 119, 0.15);
-  overflow: hidden;
-  /* remove existing background-image */
-  background-image: none;
-}
-
-.day-header::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('https://www.stevenprintgallery.com.au/wp-content/uploads/2018/06/the-white-flower.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5; /* 70% transparency */
-  z-index: -1;
-  pointer-events: none; /* so clicks go through */
-}
-
+    .calendar {
+      display: grid;
+      grid-template-columns: 70px repeat(7, 1fr);
+      grid-auto-rows: calc(((100vh - 150px) / 19) * 3);
+      gap: 8px 8px;
+      width: 100vw;
+      max-width: 100vw;
+      margin: 0 auto;
+      overflow-x: auto;
+    }
+    .day-header {
+      position: relative;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+      padding: 6px 4px;
+      color: #274c77;
+      text-shadow: 1px 1px 0 #f7d1a1;
+      box-shadow: 1px 3px 6px rgba(39, 76, 119, 0.15);
+      overflow: hidden;
+      background-image: none;
+    }
+    .day-header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('https://www.stevenprintgallery.com.au/wp-content/uploads/2018/06/the-white-flower.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      z-index: -1;
+      pointer-events: none;
+    }
     .time-label {
       font-weight: 700;
       font-size: 0.9rem;
@@ -93,7 +83,6 @@
       color: #52796f;
       line-height: 56px;
     }
-
     .time-block {
       position: relative;
       cursor: pointer;
@@ -104,117 +93,102 @@
       align-items: flex-start;
       justify-content: center;
     }
-
     .time-block:hover {
       transform: translateY(-3px);
       box-shadow: 2px 5px 12px rgba(0,0,0,0.25);
       z-index: 2;
-      background-color: rgba(255 255 255 / 0.15) !important;
+      background-color: rgba(255, 255, 255, 0.15) !important;
     }
-
-.wc1 {
-  background-image: url('https://t3.ftcdn.net/jpg/01/19/78/48/360_F_119784892_PRZ2trtQxgXokRg9icHQwShi6T2UreL6.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc2 {
-  background-image: url(https://t4.ftcdn.net/jpg/05/83/96/17/360_F_583961744_0WDje9RZhrWuHTxaWlbNjUSxpQmP6vdS.jpg);
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc3 {
-  background-image: url('https://media.istockphoto.com/id/1401980312/vector/stipple-illustration-of-cloudscape-background.jpg?s=612x612&w=0&k=20&c=wJ48dX8YlFCF0S8aruISyp4Wh2ggMvjGVihI3IiO4tQ=');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc4 {
-  background-image: url('https://t3.ftcdn.net/jpg/05/00/84/22/360_F_500842228_mff5kYpDZyOgZPYhuMHdmGIhaqITWGWy.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc5 {
-  background-image: url('https://img.freepik.com/free-vector/abstract-soft-yellow-watercolor-texture-background-vector_1055-18183.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc6 {
-  background-image: url('https://cdn.pixabay.com/photo/2017/06/19/14/22/watercolor-2419495_960_720.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.wc7 {
-  background-image: url('https://st4.depositphotos.com/23035388/30476/i/450/depositphotos_304769168-stock-photo-abstract-dark-grey-watercolor-background.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
+    .wc1 {
+      background-image: url('https://t3.ftcdn.net/jpg/01/19/78/48/360_F_119784892_PRZ2trtQxgXokRg9icHQwShi6T2UreL6.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc2 {
+      background-image: url('https://t4.ftcdn.net/jpg/05/83/96/17/360_F_583961744_0WDje9RZhrWuHTxaWlbNjUSxpQmP6vdS.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc3 {
+      background-image: url('https://media.istockphoto.com/id/1401980312/vector/stipple-illustration-of-cloudscape-background.jpg?s=612x612&w=0&k=20&c=wJ48dX8YlFCF0S8aruISyp4Wh2ggMvjGVihI3IiO4tQ=');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc4 {
+      background-image: url('https://t3.ftcdn.net/jpg/05/00/84/22/360_F_500842228_mff5kYpDZyOgZPYhuMHdmGIhaqITWGWy.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc5 {
+      background-image: url('https://img.freepik.com/free-vector/abstract-soft-yellow-watercolor-texture-background-vector_1055-18183.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc6 {
+      background-image: url('https://cdn.pixabay.com/photo/2017/06/19/14/22/watercolor-2419495_960_720.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .wc7 {
+      background-image: url('https://st4.depositphotos.com/23035388/30476/i/450/depositphotos_304769168-stock-photo-abstract-dark-grey-watercolor-background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
     .wc1, .wc2, .wc3, .wc4, .wc5, .wc6, .wc7 {
       background-size: cover;
       background-position: center;
       color: #fff;
     }
-
-.event {
-  position: absolute;
-  top: 4px;
-  left: 6px;
-  right: 6px;
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.85rem;
-  font-family: 'Faustina', serif;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-  z-index: 10;       /* higher to ensure on top */
-  cursor: pointer;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border: 1px solid transparent;
-  user-select: text;
-}
-/* Personal - off-white */
-.event.category-personal {
-  background: rgba(255, 255, 253, 0.7);
-  color: #333;
-  border-color: #fbcf41;
-}
-
-.event.category-study {
-  background: rgba(251, 207, 65, 0.7);
-  color: #333;
-  border-color: #f6a230;
-}
-
-.event.category-other {
-  background: rgba(246, 162, 48, 0.7);
-  color: #fff;
-  border-color: #5966b1;
-}
-
-.event.category-work {
-  background: rgba(89, 102, 177, 0.7);
-  color: #fff;
-  border-color: #36448b;
-}
-
+    .event {
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      right: 6px;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.85rem;
+      font-family: 'Faustina', serif;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      z-index: 10;
+      cursor: pointer;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border: 1px solid transparent;
+      user-select: text;
+    }
+    .event.category-personal {
+      background: rgba(255, 255, 253, 0.7);
+      color: #333;
+      border-color: #fbcf41;
+    }
+    .event.category-study {
+      background: rgba(251, 207, 65, 0.7);
+      color: #333;
+      border-color: #f6a230;
+    }
+    .event.category-other {
+      background: rgba(246, 162, 48, 0.7);
+      color: #fff;
+      border-color: #5966b1;
+    }
+    .event.category-work {
+      background: rgba(89, 102, 177, 0.7);
+      color: #fff;
+      border-color: #36448b;
+    }
     .nav-buttons {
       display: flex;
       justify-content: center;
       gap: 1rem;
       margin-bottom: 0.5rem;
     }
-
     button {
       font-family: 'Fredericka the Great', cursive;
       font-size: 1.1rem;
@@ -225,17 +199,13 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
     button:hover:not(:disabled) {
       background-color: #e6dfd4;
     }
-
     button:disabled {
       opacity: 0.5;
       cursor: default;
     }
-
-    /* Modal */
     #eventModal {
       position: fixed;
       top: 0; left: 0;
@@ -247,7 +217,6 @@
       justify-content: center;
       z-index: 10;
     }
-
     #eventModal .modal-content {
       background: #fff;
       padding: 1rem;
@@ -256,427 +225,200 @@
       max-width: 400px;
       font-family: 'Faustina', serif;
     }
-
     #eventModal label {
       display: block;
       margin-top: 0.5rem;
     }
-
     #eventModal input, #eventModal select {
-      width: 100%;
-      padding: 0.4rem;
-      margin-top: 0.25rem;
-    }
+     
 
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
+  const eventCategorySelect = document.getElementById('eventCategory');
+  const deleteEventBtn = document.getElementById('deleteEventBtn');
+  const cancelEventBtn = document.getElementById('cancelEventBtn');
 
-    .title-container {
-  position: relative;
-  display: inline-block; /* shrink to fit h1 */
-  margin: 2rem auto 1rem;
-  text-align: center;
-  width: max-content;
-}
+  let currentWeekStart = getStartOfWeek(new Date());
+  let events = loadEvents();
 
-.title-container::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  background-image: url('https://media.newyorker.com/photos/5bbe1cc1ed07d32d421c9a66/16:9/w_1809,h_1017,c_limit/181022_r33057.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.7;
-  z-index: -1;
-  border-radius: 10px;
-}
-.time-block.drag-over {
-  outline: 2px dashed #274c77;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-  </style>
-</head>
-<body>
-<!-- Timer & Current Event (Top Left) -->
-<div id="timer" style="position: fixed; top: 5px; left: 5px; font-family: monospace; font-size: 22px; background: rgba(255 255 255 / 0.85); padding: 4px 8px; border-radius: 4px; box-shadow: 0 0 6px rgba(0,0,0,0.1); max-width: 250px; z-index: 999;">
-  <div id="timeDisplay">Loading time...</div>
-  <div id="currentEvent" style="margin-top: 4px; font-size: 12px; color: #555;">No current event</div>
-</div>
-<!-- Show To-Do Button (Fixed Top Right) -->
-<button id="openTodo" style="position: fixed; top: 5px; right: 5px; display: none; z-index: 1000; font-family: 'Fredericka the Great', cursive; font-size: 14px; padding: 4px 8px; border: 2px solid #274c77; background-color: #f9f7f1; color: #274c77; border-radius: 4px; cursor: pointer;">
-  Show To-Do
-</button>
-
-<!-- Tiny To-Do List (Top Right) -->
-<div id="todoList" style="position: fixed; top: 5px; right: 5px; background: rgba(255 255 255 / 0.95); border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 8px; width: 300px; font-family: 'Fredericka the Great', cursive; font-size: 14px; z-index: 999;">
-  <button id="closeTodo" style="float: right; background: none; border: none; font-size: 18px; line-height: 1; cursor: pointer;">×</button>
-  <strong>To-Do</strong>
-  <ul id="todoItems" style="list-style: none; padding-left: 0; max-height: 150px; overflow-y: auto; margin: 6px 0;"></ul>
-  <input id="todoInput" type="text" placeholder="Add new task" style="width: 100%; padding: 4px; font-size: 14px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;" />
-</div>
-<div class="title-container">
-  <h1>Hourly Planner<br><small>July 20, 2025 onwards</small></h1>
-</div>
-
-  <div class="nav-buttons">
-    <button id="prev">&lt; Prev Week</button>
-    <button id="next">Next Week &gt;</button>
-  </div>
-
-  <div class="container">
-    <div class="calendar" id="calendar"></div>
-  </div>
-
-  <!-- Modal -->
-  <div id="eventModal">
-    <div class="modal-content">
-      <form id="eventForm">
-        <input type="hidden" id="eventKey" />
-        <label>Event Title:
-          <input type="text" id="eventTitle" required />
-        </label>
-        <label>Category:
-          <select id="eventCategory">
-            <option value="work">Work</option>
-            <option value="personal">Personal</option>
-            <option value="study">Study</option>
-            <option value="other">Other</option>
-          </select>
-        </label>
-        <label>Duration (hours):
-          <input type="number" id="eventDuration" min="1" max="6" value="1" />
-        </label>
-        <label><input type="checkbox" id="eventRepeat" /> Repeat Weekly</label>
-        <div class="actions">
-          <button type="submit">Save</button>
-          <button type="button" id="deleteBtn">Delete</button>
-          <button type="button" id="cancelBtn">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const calendarEl = document.getElementById('calendar');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-
-    const modal = document.getElementById('eventModal');
-    const form = document.getElementById('eventForm');
-    const titleInput = document.getElementById('eventTitle');
-    const categoryInput = document.getElementById('eventCategory');
-    const durationInput = document.getElementById('eventDuration');
-    const repeatInput = document.getElementById('eventRepeat');
-    const eventKeyInput = document.getElementById('eventKey');
-    const deleteBtn = document.getElementById('deleteBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const hours = Array.from({length: 19}, (_, i) => `${(i + 5) % 12 || 12} ${i + 5 < 12 ? 'AM' : 'PM'}`);
-function shuffleArray(array) {
-  let arr = array.slice(); // copy array
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  // Helper: get Sunday of the week for a given date
+  function getStartOfWeek(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    const day = d.getDay();
+    d.setDate(d.getDate() - day);
+    return d;
   }
-  return arr;
-}
 
-let wcClasses = ['wc1','wc2','wc3','wc4','wc5','wc6','wc7'];
-let shuffledWcClasses = shuffleArray(wcClasses);
+  // Helper: format date as YYYY-MM-DD
+  function formatDate(date) {
+    return date.toISOString().slice(0, 10);
+  }
 
+  // Load events from localStorage
+  function loadEvents() {
+    try {
+      const data = localStorage.getItem('hourlyPlannerEvents');
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
 
+  // Save events to localStorage
+  function saveEvents() {
+    localStorage.setItem('hourlyPlannerEvents', JSON.stringify(events));
+  }
 
-    const startDate = new Date('2025-07-20T00:00:00');
-    const maxWeeks = Math.floor((new Date('2025-09-07') - startDate) / (7*86400000));
-    let currentWeekStart = new Date(startDate);
+  // Render calendar grid
+  function renderCalendar() {
+    grid.innerHTML = '';
 
-    function addDays(date, days) {
-      const result = new Date(date);
-      result.setDate(result.getDate() + days);
-      return result;
+    // First cell empty for time labels header
+    const emptyHeader = document.createElement('div');
+    emptyHeader.className = 'day-header';
+    grid.appendChild(emptyHeader);
+
+    // Day headers with background images
+    for (let i = 0; i < 7; i++) {
+      const dayHeader = document.createElement('div');
+      dayHeader.className = 'day-header wc' + ((i % 7) + 1);
+      const date = new Date(currentWeekStart);
+      date.setDate(date.getDate() + i);
+      dayHeader.textContent = `${daysOfWeek[date.getDay()]}\n${date.toLocaleDateString(undefined, {month: 'short', day: 'numeric'})}`;
+      grid.appendChild(dayHeader);
     }
 
-    function weekDiff(start, end) {
-      return Math.floor((end - start) / (7*86400000));
-    }
+    // For each hour, create row: time label + 7 day cells
+    for (let h = 0; h < hoursCount; h++) {
+      const hourLabel = document.createElement('div');
+      hourLabel.className = 'time-label';
+      hourLabel.textContent = formatHour(hoursStart + h);
+      grid.appendChild(hourLabel);
 
-    function clearCalendar() {
-      calendarEl.innerHTML = '';
-    }
+      for (let d = 0; d < 7; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'time-block wc' + ((d % 7) + 1);
+        const cellDate = new Date(currentWeekStart);
+        cellDate.setDate(cellDate.getDate() + d);
+        cellDate.setHours(hoursStart + h, 0, 0, 0);
 
-    function formatDayHeader(date) {
-      return `${days[date.getDay()]} <br><small>${date.getDate()}</small>`;
-    }
+        cell.dataset.date = formatDate(cellDate);
+        cell.dataset.hour = hoursStart + h;
 
-    function renderCalendar(weekStart) {
-// shuffle colors each time calendar renders (once per week)
-shuffledWcClasses = shuffleArray(wcClasses);
+        // Show events for this date+hour
+        const cellEvents = events.filter(e => e.date === cell.dataset.date && e.hour === cell.dataset.hour);
+        cellEvents.forEach(e => {
+          const evDiv = document.createElement('div');
+          evDiv.className = 'event category-' + e.category;
+          evDiv.textContent = e.title;
+          evDiv.dataset.eventId = e.id;
+          evDiv.title = `${e.title} (${e.category})`;
+          evDiv.addEventListener('click', (evt) => {
+            evt.stopPropagation();
+            openEventModal(e);
+          });
+          cell.appendChild(evDiv);
+        });
 
+        cell.addEventListener('click', () => openEventModal({
+          id: null,
+          date: cell.dataset.date,
+          hour: cell.dataset.hour,
+          title: '',
+          category: ''
+        }));
 
-      clearCalendar();
-      calendarEl.appendChild(document.createElement('div')); // blank corner
-
-      for (let i = 0; i < 7; i++) {
-        const header = document.createElement('div');
-        header.className = 'day-header';
-        header.innerHTML = formatDayHeader(addDays(weekStart, i));
-        calendarEl.appendChild(header);
+        grid.appendChild(cell);
       }
-
-      hours.forEach((hour, hIndex) => {
-        const timeLabel = document.createElement('div');
-        timeLabel.className = 'time-label';
-        timeLabel.textContent = hour;
-        calendarEl.appendChild(timeLabel);
-
-        for (let d = 0; d < 7; d++) {
-          const day = addDays(weekStart, d);
-          const dayStr = day.toISOString().slice(0,10);
-          const key = `${dayStr}_${hour}`;
-
-          const block = document.createElement('div');
-          block.className = `time-block ${shuffledWcClasses[d % shuffledWcClasses.length]}`;
-          block.dataset.key = key;
-          calendarEl.appendChild(block);
-        // Allow drop
-block.addEventListener('dragover', (e) => {
-  e.preventDefault(); // Needed to allow dropping
-});
-
-// Optional: visual feedback
-block.addEventListener('dragenter', () => {
-  block.classList.add('drag-over');
-});
-block.addEventListener('dragleave', () => {
-  block.classList.remove('drag-over');
-});
-
-// Handle drop
-block.addEventListener('drop', (e) => {
-  e.preventDefault();
-  block.classList.remove('drag-over');
-  const sourceKey = e.dataTransfer.getData('text/plain');
-  const targetKey = block.dataset.key;
-
-  if (sourceKey === targetKey) return;
-
-  const eventData = JSON.parse(localStorage.getItem(sourceKey));
-  if (!eventData) return;
-
-  localStorage.setItem(targetKey, JSON.stringify(eventData));
-  localStorage.removeItem(sourceKey);
-
-  renderCalendar(currentWeekStart); // Refresh view
-});
-
-          const eventData = JSON.parse(localStorage.getItem(key) || 'null');
-          if (eventData) {
-            const eventEl = document.createElement('div');
-            eventEl.className = `event category-${eventData.category}`;
-            eventEl.textContent = eventData.title;
-            eventEl.style.height = `${eventData.duration * 60-20}px`;
-              eventEl.setAttribute('draggable', 'true');
-  eventEl.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text/plain', key); // key = original time block
-  });
-            eventEl.addEventListener('click', (e) => {
-              e.stopPropagation();
-              openModal(key, eventData);
-            });
-            block.appendChild(eventEl);
-          }
-
-          block.addEventListener('click', () => openModal(key));
-        }
-      });
     }
+  }
 
-    function openModal(key, data = null) {
-      modal.style.display = 'flex';
-      eventKeyInput.value = key;
-      titleInput.value = data?.title || '';
-      categoryInput.value = data?.category || 'work';
-      durationInput.value = data?.duration || 1;
-      repeatInput.checked = data?.repeat || false;
-    }
+  // Format hour number to readable format (e.g., 6 => 6:00 AM)
+  function formatHour(hour) {
+    const suffix = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+    return `${hour12}:00 ${suffix}`;
+  }
 
-    function closeModal() {
-      modal.style.display = 'none';
-      form.reset();
-    }
+  // Open modal with event data (empty for new)
+  function openEventModal(event) {
+    eventIdInput.value = event.id ?? '';
+    eventTitleInput.value = event.title ?? '';
+    eventCategorySelect.value = event.category ?? '';
+    eventForm.dataset.date = event.date;
+    eventForm.dataset.hour = event.hour;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const key = eventKeyInput.value;
-      const [dateStr, hour] = key.split('_');
-      const eventData = {
-        title: titleInput.value,
-        category: categoryInput.value,
-        duration: parseInt(durationInput.value),
-        repeat: repeatInput.checked
-      };
+    deleteEventBtn.style.display = event.id ? 'inline-block' : 'none';
 
-      localStorage.setItem(key, JSON.stringify(eventData));
+    eventModal.style.display = 'flex';
+    eventTitleInput.focus();
+  }
 
-      if (eventData.repeat) {
-        let recurDate = new Date(dateStr);
-        while (recurDate <= new Date('2025-09-07')) {
-          recurDate.setDate(recurDate.getDate() + 7);
-          const recurKey = `${recurDate.toISOString().slice(0,10)}_${hour}`;
-          localStorage.setItem(recurKey, JSON.stringify(eventData));
-        }
+  // Close modal
+  function closeEventModal() {
+    eventModal.style.display = 'none';
+  }
+
+  // Add or update event
+  function saveEvent(event) {
+    event.preventDefault();
+    const id = eventIdInput.value;
+    const title = eventTitleInput.value.trim();
+    const category = eventCategorySelect.value;
+    const date = eventForm.dataset.date;
+    const hour = parseInt(eventForm.dataset.hour, 10);
+
+    if (!title || !category) return;
+
+    if (id) {
+      // Update existing
+      const idx = events.findIndex(e => e.id === id);
+      if (idx >= 0) {
+        events[idx].title = title;
+        events[idx].category = category;
       }
-
-      closeModal();
-      renderCalendar(currentWeekStart);
-    });
-
-    deleteBtn.addEventListener('click', () => {
-      const key = eventKeyInput.value;
-      localStorage.removeItem(key);
-      closeModal();
-      renderCalendar(currentWeekStart);
-    });
-
-    cancelBtn.addEventListener('click', closeModal);
-    prevBtn.addEventListener('click', () => { currentWeekStart = addDays(currentWeekStart, -7); updateButtons(); renderCalendar(currentWeekStart); });
-    nextBtn.addEventListener('click', () => { currentWeekStart = addDays(currentWeekStart, 7); updateButtons(); renderCalendar(currentWeekStart); });
-
-    function updateButtons() {
-      const diff = weekDiff(startDate, currentWeekStart);
-      prevBtn.disabled = diff <= 0;
-      nextBtn.disabled = diff >= maxWeeks;
+    } else {
+      // New event - generate unique id
+      const newId = 'e' + Date.now() + Math.floor(Math.random() * 1000);
+      events.push({id: newId, title, category, date, hour});
     }
 
-    updateButtons();
-    renderCalendar(currentWeekStart);
-    // --- Millisecond Timer + Current Event ---
-
-const timeDisplay = document.getElementById('timeDisplay');
-const currentEventEl = document.getElementById('currentEvent');
-
-function pad(num, size=2) {
-  let s = num + "";
-  while (s.length < size) s = "0" + s;
-  return s;
-}
-
-// Helper to find event for current time in calendar data
-function getCurrentEvent() {
-  const now = new Date();
-  // Format keys like 'YYYY-MM-DD_5 AM'
-  const hour24 = now.getHours();
-  const hour12 = ((hour24 + 11) % 12 + 1);
-  const ampm = hour24 < 12 ? "AM" : "PM";
-  const hourLabel = `${hour12} ${ampm}`;
-
-  const dateStr = now.toISOString().slice(0,10);
-  const key = `${dateStr}_${hourLabel}`;
-
-  const eventData = JSON.parse(localStorage.getItem(key) || 'null');
-  if (eventData) {
-    return `${eventData.title} (${eventData.category})`;
+    saveEvents();
+    renderCalendar();
+    closeEventModal();
   }
-  return null;
-}
 
-function updateTimer() {
-  const now = new Date();
-  const h = pad(now.getHours());
-  const m = pad(now.getMinutes());
-  const s = pad(now.getSeconds());
-  const ms = pad(now.getMilliseconds(), 3);
-  timeDisplay.textContent = `Time: ${h}:${m}:${s}.${ms}`;
+  // Delete event
+  function deleteEvent() {
+    const id = eventIdInput.value;
+    if (!id) return;
+    events = events.filter(e => e.id !== id);
+    saveEvents();
+    renderCalendar();
+    closeEventModal();
+  }
 
-  const currentEvent = getCurrentEvent();
-  currentEventEl.textContent = currentEvent ? `Current event: ${currentEvent}` : 'No current event';
-
-  requestAnimationFrame(updateTimer);
-}
-updateTimer();
-
-
-// --- Simple Tiny To-Do List ---
-
-const todoInput = document.getElementById('todoInput');
-const todoItems = document.getElementById('todoItems');
-
-function saveTodos(todos) {
-  localStorage.setItem('simpleTodoList', JSON.stringify(todos));
-}
-
-function loadTodos() {
-  return JSON.parse(localStorage.getItem('simpleTodoList') || '[]');
-}
-
-function renderTodos() {
-  todoItems.innerHTML = '';
-  const todos = loadTodos();
-  todos.forEach((task, i) => {
-    const li = document.createElement('li');
-    li.style.display = 'flex';
-    li.style.justifyContent = 'space-between';
-    li.style.alignItems = 'center';
-    li.style.padding = '2px 0';
-
-    const span = document.createElement('span');
-    span.textContent = task;
-    li.appendChild(span);
-
-    const btn = document.createElement('button');
-    btn.textContent = '✕';
-    btn.style.background = 'none';
-    btn.style.border = 'none';
-    btn.style.color = '#b33';
-    btn.style.cursor = 'pointer';
-    btn.style.fontSize = '14px';
-    btn.title = 'Remove task';
-
-    btn.addEventListener('click', () => {
-      todos.splice(i, 1);
-      saveTodos(todos);
-      renderTodos();
-    });
-
-    li.appendChild(btn);
-    todoItems.appendChild(li);
+  // Event listeners
+  eventForm.addEventListener('submit', saveEvent);
+  deleteEventBtn.addEventListener('click', deleteEvent);
+  cancelEventBtn.addEventListener('click', closeEventModal);
+  eventModal.addEventListener('click', e => {
+    if (e.target === eventModal) closeEventModal();
   });
-}
 
-todoInput.addEventListener('keypress', e => {
-  if (e.key === 'Enter' && todoInput.value.trim() !== '') {
-    const todos = loadTodos();
-    todos.push(todoInput.value.trim());
-    saveTodos(todos);
-    todoInput.value = '';
-    renderTodos();
-  }
-});
+  // Navigate weeks
+  prevWeekBtn.addEventListener('click', () => {
+    currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+    renderCalendar();
+  });
+  nextWeekBtn.addEventListener('click', () => {
+    currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+    renderCalendar();
+  });
 
-renderTodos();
-const todoListEl = document.getElementById('todoList');
-const closeTodoBtn = document.getElementById('closeTodo');
-const openTodoBtn = document.getElementById('openTodo');
+  // Initial render
+  renderCalendar();
 
-closeTodoBtn.addEventListener('click', () => {
-  todoListEl.style.display = 'none';
-  openTodoBtn.style.display = 'inline-block'; // show open button
-});
+})();
 
-openTodoBtn.addEventListener('click', () => {
-  todoListEl.style.display = 'block';
-  openTodoBtn.style.display = 'none'; // hide open button
-});
 
-  </script>
-</body>
-</html>
 
