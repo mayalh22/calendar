@@ -19,3 +19,5 @@ there is a useful duration feature if an event takes > 1 hour
 its very simple!
 
 thanks for reading.
+
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
