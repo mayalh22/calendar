@@ -1,1 +1,5 @@
 # calendar
+
+This Hourly Planner is a web-based weekly calendar designed to help users organize their daily schedules from 6 AM to 10 PM. It displays a grid with days of the week and hourly time slots, allowing users to add, edit, and delete events by clicking on any time block. Events can be categorized as Work, Personal, Study, or Other, and can optionally be set to repeat weekly. The planner highlights the current time and shows the ongoing event, providing a clear, real-time overview of the day. All event data is saved locally in the browser to maintain persistence across sessions.
+
+Additionally, the planner includes a simple to-do list feature for tracking tasks outside scheduled events. Users can add new to-dos, view the list, and remove completed items by clicking on them. The user interface is styled with custom fonts and subtle background patterns to offer a visually appealing yet functional experience. Navigation buttons allow users to browse through different weeks easily, making it a practical tool for managing weekly schedules and tasks.
