@@ -255,6 +255,3 @@ eventModal.addEventListener('click', e => {
     eventModal.style.display = 'none';
   }
 });
-if (isToday(date)) {
-  dayHeader.classList.add('today');
-}
