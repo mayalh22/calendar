@@ -199,3 +199,10 @@ eventModal.addEventListener('click', e => {
     eventModal.style.display = 'none';
   }
 });
+if (isToday(date)) {
+  dayHeader.classList.add('today');
+}
+function isToday(date) {
+  const today = new Date();
+  return date.toDateString() === today.toDateString();
+}

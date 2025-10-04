@@ -1,4 +1,6 @@
 body {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -7,11 +9,11 @@ body {
     linear-gradient(to right, #ccc 1px, transparent 1px),
     linear-gradient(to bottom, #ccc 1px, transparent 1px);
   background-size: 20px 20px;
-  font-family: 'Fredericka the Great', cursive;
-  color: #2f3e46;
   background-color: #f9f7f1;
+  color: #2f3e46;
   user-select: none;
 }
+
 h1 {
   text-align: center;
   margin: 1rem 1rem 0.5rem;
@@ -188,4 +190,204 @@ h1 small {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+}
+#timer {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-family: monospace;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+#currentEvent {
+  font-size: 14px;
+  margin-top: 6px;
+  color: #444;
+}
+#openTodo {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  padding: 10px 14px;
+  background-color: #ffffff;
+  border: 2px solid #274c77;
+  border-radius: 6px;
+  font-family: 'Fredericka the Great', cursive;
+  color: #274c77;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#eventModal .modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  color: #1f2d33;
+}
+
+#eventModal form label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+#eventModal form input[type="text"],
+#eventModal form select,
+#eventModal form input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+#eventModal form .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#eventModal form button {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Fredericka the Great', cursive;
+}
+
+#eventModal form button[type="submit"] {
+  background-color: #274c77;
+  color: white;
+}
+
+#eventModal form button#deleteBtn {
+  background-color: #d9534f;
+  color: white;
+}
+
+#eventModal form button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+}
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 1rem 0;
+}
+
+.nav-buttons button {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: 2px solid #274c77;
+  background-color: #f9f7f1;
+  color: #274c77;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: #dfe7ec;
+  color: #1f2d33;
+}
+#todoInput {
+  font-size: 16px;
+  padding: 8px;
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav-buttons button {
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  #timer, #openTodo {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+.day-header.today {
+  background-color: #fcefb4;
+  box-shadow: 0 0 0 3px #ffd166 inset;
+}
+.calendar {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.time-block {
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 6px;
+  background-color: #fdfdfd;
+  transition: all 0.15s ease-in-out;
+}
+#todoList {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 12px;
+  width: 300px;
+  background: #fff;
+}
+
+#todoItems li {
+  background: #f9f9f9;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+#todoItems li:hover {
+  background: #ffe5b4;
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(1.05);
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+#eventCategory option[value="work"] {
+  background-color: #a8dadc;
+}
+#eventCategory option[value="personal"] {
+  background-color: #ffb4a2;
+}
+#eventCategory option[value="study"] {
+  background-color: #b5ead7;
+}
+#eventCategory option[value="other"] {
+  background-color: #f0efeb;
+}
+* {
+  transition: all 0.2s ease;
 }
