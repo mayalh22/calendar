@@ -371,3 +371,9 @@ button:hover {
 #eventCategory option[value="other"] {
   background-color: #f0efeb;
 }
+button:focus,
+input:focus,
+select:focus {
+  outline: 3px solid #274c77;
+  outline-offset: 2px;
+}
