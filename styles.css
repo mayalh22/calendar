@@ -137,7 +137,7 @@ h1 small {
   border: none;
   border-radius: 5px;
   padding: 8px 12px;
-  font-family: 'Fredericka the Great', cursive;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
 }
 #eventModal form button[type="submit"] {
@@ -200,7 +200,7 @@ h1 small {
   background-color: #ffffff;
   border: 2px solid #274c77;
   border-radius: 6px;
-  font-family: 'Fredericka the Great', cursive;
+  font-family: Arial, Helvetica, sans-serif;
   color: #274c77;
   cursor: pointer;
   z-index: 1000;
@@ -250,7 +250,7 @@ h1 small {
   border-radius: 6px;
   border: none;
   cursor: pointer;
-  font-family: 'Fredericka the Great', cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #eventModal form button[type="submit"] {
@@ -275,7 +275,7 @@ h1 small {
 }
 
 .nav-buttons button {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   padding: 10px 20px;
   border: 2px solid #274c77;
@@ -375,4 +375,86 @@ input:focus,
 select:focus {
   outline: 3px solid #274c77;
   outline-offset: 2px;
+}
+#eventModal form {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#eventModal form label {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: block;
+  color: #274c77;
+}
+
+#eventModal form input[type="text"],
+#eventModal form select,
+#eventModal form input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 2px solid #a8dadc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  color: #1f2d33;
+}
+
+#eventModal form input[type="text"]:focus,
+#eventModal form select:focus,
+#eventModal form input[type="number"]:focus {
+  border-color: #274c77;
+  outline: none;
+  box-shadow: 0 0 5px rgba(39, 76, 119, 0.5);
+}
+
+#eventModal form .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+#eventModal form button {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+#eventModal form button[type="submit"] {
+  background-color: #274c77;
+  color: white;
+}
+
+#eventModal form button[type="submit"]:hover {
+  background-color: #1f2d33;
+  transform: scale(1.05);
+}
+
+#eventModal form button#deleteBtn {
+  background-color: #d9534f;
+  color: white;
+}
+
+#eventModal form button#deleteBtn:hover {
+  background-color: #b02a37;
+  transform: scale(1.05);
+}
+
+#eventModal form button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+}
+
+#eventModal form button#cancelBtn:hover {
+  background-color: #565e62;
+  transform: scale(1.05);
 }
