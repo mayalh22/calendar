@@ -185,3 +185,8 @@ h1 small {
   background-color: #f0efeb;
   color: #333;
 }
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
