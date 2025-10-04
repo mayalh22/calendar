@@ -191,10 +191,19 @@ function updateTime() {
   const dateStr = now.toISOString().split('T')[0];
   const hour = now.getHours();
 
-  const key = getEventKey(dateStr, hour);
-  const ev = events[key];
-  if(ev) {
-    currentEventDisplay.textContent = `Current: ${ev.title} (${ev.category})`;
+  let currentEvent = null;
+
+  for (let h = 6; h <= hour; h++) {
+    const key = getEventKey(dateStr, h);
+    const ev = events[key];
+    if (ev && h + ev.duration > hour) {
+      currentEvent = ev;
+      break;
+    }
+  }
+
+  if(currentEvent) {
+    currentEventDisplay.textContent = `Current: ${currentEvent.title} (${currentEvent.category})`;
   } else {
     currentEventDisplay.textContent = 'No current event';
   }
