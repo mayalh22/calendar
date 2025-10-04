@@ -40,6 +40,7 @@ h1 small {
   gap: 8px;
   overflow-x: auto;
   width: 100%;
+  grid-auto-flow: dense;
 }
 
 .day-header {
@@ -471,4 +472,7 @@ select:focus {
 #eventModal form button#cancelBtn:hover {
   background-color: #565e62;
   transform: scale(1.05);
+}
+.time-block.event-continued {
+  display: none;
 }

@@ -53,6 +53,7 @@ function renderCalendar() {
   calendar.appendChild(emptyCell);
   const weekDates = getWeekDates(currentMonday);
   const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
   weekDates.forEach((date, i) => {
     const dayHeader = document.createElement('div');
     dayHeader.className = 'day-header';
@@ -62,24 +63,61 @@ function renderCalendar() {
     }
     calendar.appendChild(dayHeader);
   });
+
   for(let hour=6; hour <= 22; hour++) {
     const timeLabel = document.createElement('div');
     timeLabel.className = 'time-label';
     timeLabel.textContent = `${hour}:00`;
     calendar.appendChild(timeLabel);
+
     for(let day=0; day<7; day++) {
       const timeBlock = document.createElement('div');
       timeBlock.className = 'time-block';
       timeBlock.dataset.day = day;
       timeBlock.dataset.hour = hour;
-      timeBlock.dataset.date = weekDates[day].toISOString().split('T')[0];
-      timeBlock.addEventListener('click', onTimeBlockClick);
-      const key = getEventKey(timeBlock.dataset.date, hour);
-      const ev = events[key];
-      if(ev) {
-        timeBlock.textContent = ev.title;
-        timeBlock.classList.add(ev.category || 'other');
+      const dateStr = weekDates[day].toISOString().split('T')[0];
+      timeBlock.dataset.date = dateStr;
+
+      let currentEvent = null;
+      let eventKey = null;
+      let isContinuedEvent = false;
+
+      eventKey = getEventKey(dateStr, hour);
+      currentEvent = events[eventKey];
+
+      if (!currentEvent) {
+        for (let h = 6; h < hour; h++) {
+          const prevKey = getEventKey(dateStr, h);
+          const prevEvent = events[prevKey];
+          if (prevEvent && h + prevEvent.duration > hour) {
+            currentEvent = prevEvent;
+            eventKey = prevKey; 
+            isContinuedEvent = true;
+            break;
+          }
+        }
       }
+
+      if(currentEvent) {
+        timeBlock.classList.add(currentEvent.category || 'other');
+        timeBlock.dataset.eventKey = eventKey;
+
+        if (!isContinuedEvent) {
+          timeBlock.textContent = currentEvent.title;
+          timeBlock.classList.add('event-start');
+        } else {
+          timeBlock.classList.add('event-continued');
+        }
+
+        timeBlock.addEventListener('click', onTimeBlockClick);
+
+      } else {
+        timeBlock.addEventListener('click', onTimeBlockClick);
+      }
+            if (currentEvent && !isContinuedEvent) {
+          timeBlock.style.gridRowEnd = `span ${currentEvent.duration}`;
+      }
+      
       calendar.appendChild(timeBlock);
     }
   }
@@ -91,7 +129,7 @@ function onTimeBlockClick(e) {
   const block = e.currentTarget;
   const dateStr = block.dataset.date;
   const hour = parseInt(block.dataset.hour);
-  const key = getEventKey(dateStr, hour);
+  const key = block.dataset.eventKey || getEventKey(block.dataset.date, parseInt(block.dataset.hour));
   const ev = events[key];
   if(ev) {
     eventKeyInput.value = key;
