@@ -40,6 +40,12 @@ const closeTodoBtn = document.getElementById('closeTodo');
 let currentMonday = getMonday(new Date());
 let events = JSON.parse(localStorage.getItem('plannerEvents') || '{}');
 let todos = JSON.parse(localStorage.getItem('plannerTodos') || '[]');
+function isToday(date) {
+  const today = new Date();
+  return date.toDateString() === today.toDateString();
+}
+
+
 function renderCalendar() {
   calendar.innerHTML = '';
   const emptyCell = document.createElement('div');
@@ -51,6 +57,9 @@ function renderCalendar() {
     const dayHeader = document.createElement('div');
     dayHeader.className = 'day-header';
     dayHeader.textContent = `${dayNames[i]} ${date.getDate()}/${date.getMonth()+1}`;
+    if (isToday(date)) {
+      dayHeader.classList.add('today');
+    }
     calendar.appendChild(dayHeader);
   });
   for(let hour=6; hour <= 22; hour++) {
@@ -201,8 +210,4 @@ eventModal.addEventListener('click', e => {
 });
 if (isToday(date)) {
   dayHeader.classList.add('today');
-}
-function isToday(date) {
-  const today = new Date();
-  return date.toDateString() === today.toDateString();
 }
