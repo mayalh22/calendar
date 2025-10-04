@@ -108,6 +108,8 @@ h1 small {
   background-position: center;
   color: #fff;
 }
+/* Add your remaining styles here... */
+/* Modal styles */
 #eventModal {
   display: none;
   position: fixed;
@@ -167,231 +169,19 @@ h1 small {
   background-color: #6c757d;
   color: #fff;
 }
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background:
-    linear-gradient(to right, #ccc 1px, transparent 1px),
-    linear-gradient(to bottom, #ccc 1px, transparent 1px);
-  background-size: 20px 20px;
-  font-family: 'Fredericka the Great', cursive;
-  color: #2f3e46;
-  background-color: #f9f7f1;
-  user-select: none;
-}
-
-.title-container {
-  text-align: center;
-}
-
-h1 {
-  text-align: center;
-  margin: 1rem 1rem 0.5rem;
-  font-size: 4.5rem;
-  letter-spacing: 0.12em;
-  color: #1f2d33;
-  text-shadow: 1px 1px 0 #f9e5d3;
-}
-
-h1 small {
-  display: block;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: normal;
-  color: #274c77;
-}
-
-.nav-buttons {
-  text-align: center;
-  margin: 10px 0;
-}
-
-.nav-buttons button {
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 1.2rem;
-  padding: 8px 16px;
-  margin: 0 10px;
-  border: 2px solid #274c77;
-  background-color: #f9f7f1;
-  color: #274c77;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.nav-buttons button:hover {
-  background-color: #274c77;
-  color: #f9f7f1;
-}
-
-.container {
-  flex-grow: 1;
-  overflow: auto;
-  padding: 0.5rem;
-}
-
-.calendar {
-  display: grid;
-  grid-template-columns: 70px repeat(7, 1fr);
-  grid-auto-rows: 56px;
-  gap: 8px 8px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.day-header {
-  position: relative;
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-  padding: 6px 4px;
-  color: #274c77;
-  text-shadow: 1px 1px 0 #f7d1a1;
-  box-shadow: 1px 3px 6px rgba(39, 76, 119, 0.15);
-  overflow: hidden;
-  background-image: none;
-}
-
-.day-header::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('https://www.stevenprintgallery.com.au/wp-content/uploads/2018/06/the-white-flower.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5;
-  z-index: -1;
-  pointer-events: none; 
-}
-
-.time-label {
-  font-weight: 700;
-  font-size: 0.9rem;
-  font-family: 'Eczar', serif;
-  text-align: right;
-  padding-right: 8px;
-  color: #52796f;
-  line-height: 56px;
-}
-
-.time-block {
-  position: relative;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
-  font-weight: 600;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s;
-  padding: 4px;
-  text-align: center;
-}
-
-.time-block:hover {
-  transform: translateY(-3px);
-  box-shadow: 2px 5px 12px rgba(0,0,0,0.25);
-  z-index: 2;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-}
-
 .work {
-  background-image: url('https://t3.ftcdn.net/jpg/01/19/78/48/360_F_119784892_PRZ2trtQxgXokRg9icHQwShi6T2UreL6.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-.personal {
-  background-image: url('https://t4.ftcdn.net/jpg/05/83/96/17/360_F_583961744_0WDje9RZhrWuHTxaWlbNjUSxpQmP6vdS.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-.study {
-  background-image: url('https://media.istockphoto.com/id/1401980312/vector/stipple-illustration-of-cloudscape-background.jpg?s=612x612&w=0&k=20&c=wJ48dX8YlFCF0S8aruISyp4Wh2ggMvjGVihI3IiO4tQ=');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-.other {
   background-color: #a8dadc;
   color: #1d3557;
 }
-#eventModal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0; 
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(3px);
-  justify-content: center;
-  align-items: center;
+.personal {
+  background-color: #ffb4a2;
+  color: #6a040f;
 }
-
-#eventModal .modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 320px;
-  max-width: 90vw;
-  font-family: 'Fredericka the Great', cursive;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+.study {
+  background-color: #b5ead7;
+  color: #1b4332;
 }
-
-#eventModal form label {
-  display: block;
-  margin-bottom: 12px;
-}
-
-#eventModal form input[type="text"],
-#eventModal form select,
-#eventModal form input[type="number"] {
-  width: 100%;
-  padding: 6px 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-#eventModal form .actions {
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-#eventModal form button {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 1rem;
-}
-
-#eventModal form button[type="submit"] {
-  background-color: #274c77;
-  color: #fff;
-}
-
-#eventModal form button#deleteBtn {
-  background-color: #d9534f;
-  color: #fff;
-}
-
-#eventModal form button#cancelBtn {
-  background-color: #6c757d;
-  color: #fff;
+.other {
+  background-color: #f0efeb;
+  color: #333;
 }
