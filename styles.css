@@ -371,6 +371,3 @@ button:hover {
 #eventCategory option[value="other"] {
   background-color: #f0efeb;
 }
-* {
-  transition: all 0.2s ease;
-}
