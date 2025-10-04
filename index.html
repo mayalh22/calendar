@@ -4,11 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hourly Planner</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Faustina&family=Eczar&display=swap" rel="stylesheet" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-
     body {
       margin: 0;
       height: 100vh;
@@ -23,7 +21,6 @@
       background-color: #f9f7f1;
       user-select: none;
     }
-
     h1 {
       text-align: center;
       margin: 1rem 1rem 0.5rem;
@@ -32,7 +29,6 @@
       color: #1f2d33;
       text-shadow: 1px 1px 0 #f9e5d3;
     }
-
     h1 small {
       display: block;
       font-size: 2rem;
@@ -40,17 +36,15 @@
       letter-spacing: normal;
       color: #274c77;
     }
-
     .container {
       flex-grow: 1;
       overflow: auto;
       padding: 0.5rem;
     }
-
 .calendar {
   display: grid;
   grid-template-columns: 70px repeat(7, 1fr);
-  grid-auto-rows: calc(((100vh - 150px) / 19)* 3); /* 19 rows for hours, subtract header/nav height */
+  grid-auto-rows: calc(((100vh - 150px) / 19)* 3);
   gap: 8px 8px;
   width: 100vw;
   max-width: 100vw;
@@ -68,7 +62,6 @@
   text-shadow: 1px 1px 0 #f7d1a1;
   box-shadow: 1px 3px 6px rgba(39, 76, 119, 0.15);
   overflow: hidden;
-  /* remove existing background-image */
   background-image: none;
 }
 
@@ -79,9 +72,9 @@
   background-image: url('https://www.stevenprintgallery.com.au/wp-content/uploads/2018/06/the-white-flower.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.5; /* 70% transparency */
+  opacity: 0.5;
   z-index: -1;
-  pointer-events: none; /* so clicks go through */
+  pointer-events: none; 
 }
 
     .time-label {
@@ -125,35 +118,30 @@
   background-position: center;
   color: #fff;
 }
-
 .wc3 {
   background-image: url('https://media.istockphoto.com/id/1401980312/vector/stipple-illustration-of-cloudscape-background.jpg?s=612x612&w=0&k=20&c=wJ48dX8YlFCF0S8aruISyp4Wh2ggMvjGVihI3IiO4tQ=');
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-
 .wc4 {
   background-image: url('https://t3.ftcdn.net/jpg/05/00/84/22/360_F_500842228_mff5kYpDZyOgZPYhuMHdmGIhaqITWGWy.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-
 .wc5 {
   background-image: url('https://img.freepik.com/free-vector/abstract-soft-yellow-watercolor-texture-background-vector_1055-18183.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-
 .wc6 {
   background-image: url('https://cdn.pixabay.com/photo/2017/06/19/14/22/watercolor-2419495_960_720.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
 }
-
 .wc7 {
   background-image: url('https://st4.depositphotos.com/23035388/30476/i/450/depositphotos_304769168-stock-photo-abstract-dark-grey-watercolor-background.jpg');
   background-size: cover;
@@ -165,7 +153,6 @@
       background-position: center;
       color: #fff;
     }
-
 .event {
   position: absolute;
   top: 4px;
@@ -176,7 +163,7 @@
   font-size: 0.85rem;
   font-family: 'Faustina', serif;
   box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-  z-index: 10;       /* higher to ensure on top */
+  z-index: 10;
   cursor: pointer;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -296,23 +283,18 @@
   border: 2px solid #d9ccc1;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-
-
-
     .actions {
       display: flex;
       justify-content: space-between;
       margin-top: 1rem;
     }
-
     .title-container {
   position: relative;
-  display: inline-block; /* shrink to fit h1 */
+  display: inline-block;
   margin: 2rem auto 1rem;
   text-align: center;
   width: max-content;
 }
-
 .title-container::before {
   content: "";
   position: absolute;
@@ -331,21 +313,16 @@
   outline: 2px dashed #274c77;
   background-color: rgba(255, 255, 255, 0.3);
 }
-
   </style>
 </head>
 <body>
-<!-- Timer & Current Event (Top Left) -->
 <div id="timer" style="position: fixed; top: 5px; left: 5px; font-family: monospace; font-size: 22px; background: rgba(255 255 255 / 0.85); padding: 4px 8px; border-radius: 4px; box-shadow: 0 0 6px rgba(0,0,0,0.1); max-width: 250px; z-index: 999;">
   <div id="timeDisplay">Loading time...</div>
   <div id="currentEvent" style="margin-top: 4px; font-size: 12px; color: #555;">No current event</div>
 </div>
-<!-- Show To-Do Button (Fixed Top Right) -->
 <button id="openTodo" style="position: fixed; top: 5px; right: 5px; display: none; z-index: 1000; font-family: 'Fredericka the Great', cursive; font-size: 14px; padding: 4px 8px; border: 2px solid #274c77; background-color: #f9f7f1; color: #274c77; border-radius: 4px; cursor: pointer;">
   Show To-Do
 </button>
-
-<!-- Tiny To-Do List (Top Right) -->
 <div id="todoList" style="position: fixed; top: 5px; right: 5px; background: rgba(255 255 255 / 0.95); border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,0.1); padding: 8px; width: 300px; font-family: 'Fredericka the Great', cursive; font-size: 14px; z-index: 999;">
   <button id="closeTodo" style="float: right; background: none; border: none; font-size: 18px; line-height: 1; cursor: pointer;">×</button>
   <strong>To-Do</strong>
@@ -412,7 +389,7 @@
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const hours = Array.from({length: 19}, (_, i) => `${(i + 5) % 12 || 12} ${i + 5 < 12 ? 'AM' : 'PM'}`);
 function shuffleArray(array) {
-  let arr = array.slice(); // copy array
+  let arr = array.slice();
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -448,12 +425,11 @@ let shuffledWcClasses = shuffleArray(wcClasses);
     }
 
     function renderCalendar(weekStart) {
-// shuffle colors each time calendar renders (once per week)
 shuffledWcClasses = shuffleArray(wcClasses);
 
 
       clearCalendar();
-      calendarEl.appendChild(document.createElement('div')); // blank corner
+      calendarEl.appendChild(document.createElement('div'));
 
       for (let i = 0; i < 7; i++) {
         const header = document.createElement('div');
@@ -477,37 +453,27 @@ shuffledWcClasses = shuffleArray(wcClasses);
           block.className = `time-block ${shuffledWcClasses[d % shuffledWcClasses.length]}`;
           block.dataset.key = key;
           calendarEl.appendChild(block);
-        // Allow drop
 block.addEventListener('dragover', (e) => {
-  e.preventDefault(); // Needed to allow dropping
+  e.preventDefault();
 });
-
-// Optional: visual feedback
 block.addEventListener('dragenter', () => {
   block.classList.add('drag-over');
 });
 block.addEventListener('dragleave', () => {
   block.classList.remove('drag-over');
 });
-
-// Handle drop
 block.addEventListener('drop', (e) => {
   e.preventDefault();
   block.classList.remove('drag-over');
   const sourceKey = e.dataTransfer.getData('text/plain');
   const targetKey = block.dataset.key;
-
   if (sourceKey === targetKey) return;
-
   const eventData = JSON.parse(localStorage.getItem(sourceKey));
   if (!eventData) return;
-
   localStorage.setItem(targetKey, JSON.stringify(eventData));
   localStorage.removeItem(sourceKey);
-
-  renderCalendar(currentWeekStart); // Refresh view
+  renderCalendar(currentWeekStart);
 });
-
           const eventData = JSON.parse(localStorage.getItem(key) || 'null');
           if (eventData) {
             const eventEl = document.createElement('div');
@@ -516,7 +482,7 @@ block.addEventListener('drop', (e) => {
 eventEl.style.height = `calc(((100vh - 150px) / 19) * ${eventData.duration * 3})`;
               eventEl.setAttribute('draggable', 'true');
   eventEl.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text/plain', key); // key = original time block
+    e.dataTransfer.setData('text/plain', key);
   });
             eventEl.addEventListener('click', (e) => {
               e.stopPropagation();
@@ -524,12 +490,10 @@ eventEl.style.height = `calc(((100vh - 150px) / 19) * ${eventData.duration * 3})
             });
             block.appendChild(eventEl);
           }
-
           block.addEventListener('click', () => openModal(key));
         }
       });
     }
-
     function openModal(key, data = null) {
       modal.style.display = 'flex';
       eventKeyInput.value = key;
@@ -538,12 +502,10 @@ eventEl.style.height = `calc(((100vh - 150px) / 19) * ${eventData.duration * 3})
       durationInput.value = data?.duration || 1;
       repeatInput.checked = data?.repeat || false;
     }
-
     function closeModal() {
       modal.style.display = 'none';
       form.reset();
     }
-
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const key = eventKeyInput.value;
@@ -554,9 +516,7 @@ eventEl.style.height = `calc(((100vh - 150px) / 19) * ${eventData.duration * 3})
         duration: parseInt(durationInput.value),
         repeat: repeatInput.checked
       };
-
       localStorage.setItem(key, JSON.stringify(eventData));
-
       if (eventData.repeat) {
         let recurDate = new Date(dateStr);
         while (recurDate <= new Date('2025-09-07')) {
@@ -565,60 +525,46 @@ eventEl.style.height = `calc(((100vh - 150px) / 19) * ${eventData.duration * 3})
           localStorage.setItem(recurKey, JSON.stringify(eventData));
         }
       }
-
       closeModal();
       renderCalendar(currentWeekStart);
     });
-
     deleteBtn.addEventListener('click', () => {
       const key = eventKeyInput.value;
       localStorage.removeItem(key);
       closeModal();
       renderCalendar(currentWeekStart);
     });
-
     cancelBtn.addEventListener('click', closeModal);
     prevBtn.addEventListener('click', () => { currentWeekStart = addDays(currentWeekStart, -7); updateButtons(); renderCalendar(currentWeekStart); });
     nextBtn.addEventListener('click', () => { currentWeekStart = addDays(currentWeekStart, 7); updateButtons(); renderCalendar(currentWeekStart); });
-
     function updateButtons() {
       const diff = weekDiff(startDate, currentWeekStart);
       prevBtn.disabled = diff <= 0;
       nextBtn.disabled = diff >= maxWeeks;
     }
-
     updateButtons();
     renderCalendar(currentWeekStart);
-    // --- Millisecond Timer + Current Event ---
-
 const timeDisplay = document.getElementById('timeDisplay');
 const currentEventEl = document.getElementById('currentEvent');
-
 function pad(num, size=2) {
   let s = num + "";
   while (s.length < size) s = "0" + s;
   return s;
 }
-
-// Helper to find event for current time in calendar data
 function getCurrentEvent() {
   const now = new Date();
-  // Format keys like 'YYYY-MM-DD_5 AM'
   const hour24 = now.getHours();
   const hour12 = ((hour24 + 11) % 12 + 1);
   const ampm = hour24 < 12 ? "AM" : "PM";
   const hourLabel = `${hour12} ${ampm}`;
-
   const dateStr = now.toISOString().slice(0,10);
   const key = `${dateStr}_${hourLabel}`;
-
   const eventData = JSON.parse(localStorage.getItem(key) || 'null');
   if (eventData) {
     return `${eventData.title} (${eventData.category})`;
   }
   return null;
 }
-
 function updateTimer() {
   const now = new Date();
   const h = pad(now.getHours());
@@ -626,28 +572,19 @@ function updateTimer() {
   const s = pad(now.getSeconds());
   const ms = pad(now.getMilliseconds(), 3);
   timeDisplay.textContent = `Time: ${h}:${m}:${s}.${ms}`;
-
   const currentEvent = getCurrentEvent();
   currentEventEl.textContent = currentEvent ? `Current event: ${currentEvent}` : 'No current event';
-
   requestAnimationFrame(updateTimer);
 }
 updateTimer();
-
-
-// --- Simple Tiny To-Do List ---
-
 const todoInput = document.getElementById('todoInput');
 const todoItems = document.getElementById('todoItems');
-
 function saveTodos(todos) {
   localStorage.setItem('simpleTodoList', JSON.stringify(todos));
 }
-
 function loadTodos() {
   return JSON.parse(localStorage.getItem('simpleTodoList') || '[]');
 }
-
 function renderTodos() {
   todoItems.innerHTML = '';
   const todos = loadTodos();
@@ -657,11 +594,9 @@ function renderTodos() {
     li.style.justifyContent = 'space-between';
     li.style.alignItems = 'center';
     li.style.padding = '2px 0';
-
     const span = document.createElement('span');
     span.textContent = task;
     li.appendChild(span);
-
     const btn = document.createElement('button');
     btn.textContent = '✕';
     btn.style.background = 'none';
@@ -670,18 +605,15 @@ function renderTodos() {
     btn.style.cursor = 'pointer';
     btn.style.fontSize = '14px';
     btn.title = 'Remove task';
-
     btn.addEventListener('click', () => {
       todos.splice(i, 1);
       saveTodos(todos);
       renderTodos();
     });
-
     li.appendChild(btn);
     todoItems.appendChild(li);
   });
 }
-
 todoInput.addEventListener('keypress', e => {
   if (e.key === 'Enter' && todoInput.value.trim() !== '') {
     const todos = loadTodos();
@@ -691,24 +623,18 @@ todoInput.addEventListener('keypress', e => {
     renderTodos();
   }
 });
-
 renderTodos();
 const todoListEl = document.getElementById('todoList');
 const closeTodoBtn = document.getElementById('closeTodo');
 const openTodoBtn = document.getElementById('openTodo');
-
 closeTodoBtn.addEventListener('click', () => {
   todoListEl.style.display = 'none';
-  openTodoBtn.style.display = 'inline-block'; // show open button
+  openTodoBtn.style.display = 'inline-block'; 
 });
-
 openTodoBtn.addEventListener('click', () => {
   todoListEl.style.display = 'block';
-  openTodoBtn.style.display = 'none'; // hide open button
+  openTodoBtn.style.display = 'none';
 });
-
-  </script>
+</script>
 </body>
 </html>
-
-
