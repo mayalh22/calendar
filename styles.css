@@ -67,7 +67,7 @@ h1 small {
 .time-block {
   position: relative;
   cursor: pointer;
-  background-color: transparent;
+background-color: #fdfdfd;
   font-weight: 600;
   font-size: 0.9rem;
   display: flex;
@@ -154,20 +154,25 @@ h1 small {
   color: #fff;
 }
 .work {
-  background-color: #a8dadc;
+  background-color: #a8dadc !important;
   color: #1d3557;
 }
 .personal {
-  background-color: #ffb4a2;
+  background-color: #ffb4a2 !important;
   color: #6a040f;
 }
 .study {
-  background-color: #b5ead7;
+  background-color: #b5ead7 !important;
   color: #1b4332;
 }
 .other {
-  background-color: #f0efeb;
+  background-color: #f0efeb !important;
   color: #333;
+}
+.time-block.event-start {
+  align-items: center; 
+  text-align: center;
+  padding: 0 4px;
 }
 .wrapper {
   max-width: 1200px;
