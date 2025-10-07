@@ -45,7 +45,24 @@ function isToday(date) {
   return date.toDateString() === today.toDateString();
 }
 
+function getRepeatingEvent(dayIndex, hour) {
+  for (const key in events) {
+    const event = events[key];
+    if (event.repeat) {
+      const parts = key.split('-');
+          const dateParts = key.split('-');
+      const originalDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+      
+      let originalDay = originalDate.getDay();
+      const originalDayIndex = (originalDay === 0) ? 6 : originalDay - 1;
 
+      if (originalDayIndex === dayIndex && parseInt(dateParts[3]) === hour) {
+        return { event: event, key: key };
+      }
+    }
+  }
+  return null;
+}
 function renderCalendar() {
   calendar.innerHTML = '';
   const emptyCell = document.createElement('div');
@@ -82,9 +99,19 @@ function renderCalendar() {
       let eventKey = null;
       let isContinuedEvent = false;
 
-      eventKey = getEventKey(dateStr, hour);
+eventKey = getEventKey(dateStr, hour);
       currentEvent = events[eventKey];
 
+      let repeatingEventInfo = null;
+      if (!currentEvent) {
+          repeatingEventInfo = getRepeatingEvent(day, hour);
+          
+          if (repeatingEventInfo) {
+              currentEvent = repeatingEventInfo.event;
+              timeBlock.dataset.isRepeating = 'true'; 
+              eventKey = getEventKey(dateStr, hour);
+          }
+      }
       if (!currentEvent) {
         for (let h = 6; h < hour; h++) {
           const prevKey = getEventKey(dateStr, h);
@@ -127,6 +154,15 @@ function getEventKey(dateStr, hour) {
 }
 function onTimeBlockClick(e) {
   const block = e.currentTarget;
+  if (block.dataset.isRepeating === 'true' && !block.dataset.eventKey) {
+    const dateStr = block.dataset.date;
+    const hour = parseInt(block.dataset.hour);
+    const repeatingEventInfo = getRepeatingEvent(parseInt(block.dataset.day), hour);
+    if(repeatingEventInfo) {
+        alert(`REPEATING EVENT: ${repeatingEventInfo.event.title}\nTo edit or delete this event, you must open the week it was originally created in.`);
+    }
+    return; 
+  }
   const dateStr = block.dataset.date;
   const hour = parseInt(block.dataset.hour);
   const key = block.dataset.eventKey || getEventKey(block.dataset.date, parseInt(block.dataset.hour));
